@@ -1,4 +1,4 @@
-package implement_repeating_key_xor;
+package set1.implement_repeating_key_xor;
 
 public class RepeatingXOR {
     public static String encryptToHexRepeatingXOR(String text, String key) {

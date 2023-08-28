@@ -1,6 +1,6 @@
-package fixed_xor;
+package set1.fixed_xor;
 
-import hex_to_base64.*;
+import set1.hex_to_base64.*;
 
 public class FixedXOR {
     public static String produceXOR(String hex1, String hex2) {

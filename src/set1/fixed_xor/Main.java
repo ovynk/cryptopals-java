@@ -1,4 +1,4 @@
-package fixed_xor;
+package set1.fixed_xor;
 
 public class Main {
     public static void main(String[] args) {

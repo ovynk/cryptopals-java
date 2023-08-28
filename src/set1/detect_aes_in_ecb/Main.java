@@ -1,4 +1,4 @@
-package detect_aes_in_ecb;
+package set1.detect_aes_in_ecb;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,7 +9,7 @@ import java.util.Set;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
-        Scanner scanner = new Scanner(new File("set1/src/detect_aes_in_ecb/8.txt"));
+        Scanner scanner = new Scanner(new File("src/set1/detect_aes_in_ecb/8.txt"));
 
         ArrayList<String> strings = new ArrayList<>();
         while (scanner.hasNextLine()) {
@@ -28,9 +28,9 @@ public class Main {
 
             if (numBlocks - numUniqueBlocks != 0) {
                 System.out.println("Line: " + (i + 1) +
-                        " Number of all blocks: " + numBlocks +
-                        " unique blocks: " + numUniqueBlocks +
-                        " line: " + strings.get(i));
+                        ", number of all blocks: " + numBlocks +
+                        ", unique blocks: " + numUniqueBlocks +
+                        ", line: " + strings.get(i));
             }
         }
 

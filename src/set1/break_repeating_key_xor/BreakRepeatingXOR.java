@@ -1,6 +1,6 @@
-package break_repeating_key_xor;
+package set1.break_repeating_key_xor;
 
-import signle_byte_xor_chiper.SingleXORCipher;
+import set1.signle_byte_xor_chiper.SingleXORCipher;
 
 import java.util.*;
 
@@ -45,7 +45,7 @@ public class BreakRepeatingXOR {
         StringBuilder finalKey = new StringBuilder();
         for (StringBuilder transposedBlock : transposedBlocks) {
             finalKey.append(SingleXORCipher
-                    .decryptStringSingleXORCipher(transposedBlock.toString().getBytes()).getKey());
+                    .decryptStringSingleXORCipher(transposedBlock.toString().getBytes()).getC());
         }
         return finalKey.toString();
     }

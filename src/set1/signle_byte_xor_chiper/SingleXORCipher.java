@@ -1,4 +1,4 @@
-package signle_byte_xor_chiper;
+package set1.signle_byte_xor_chiper;
 
 import java.util.Map;
 
@@ -35,7 +35,7 @@ public class SingleXORCipher {
             entry('z', 1)
     );
 
-    public static Map.Entry<Character, String> decryptStringSingleXORCipher(byte[] bytes) {
+    public static ScoreCharText decryptStringSingleXORCipher(byte[] bytes) {
         long maxScore = 0;
         String maxScoredString = "";
         char keyChar = 0;
@@ -60,11 +60,12 @@ public class SingleXORCipher {
             }
             XORbytes.delete(0, XORbytes.length());
         }
-        return Map.entry(keyChar, maxScoredString);
+
+        return new ScoreCharText(maxScore, keyChar, maxScoredString);
     }
 
 
-    public static Map.Entry<Character, String> decryptStringSingleXORCipher(int[] bytes) {
+    public static ScoreCharText decryptStringSingleXORCipher(int[] bytes) {
         long maxScore = 0;
         String maxScoredString = "";
         char keyChar = 0;
@@ -89,7 +90,7 @@ public class SingleXORCipher {
             }
             XORbytes.delete(0, XORbytes.length());
         }
-        return Map.entry(keyChar, maxScoredString);
+        return new ScoreCharText(maxScore, keyChar, maxScoredString);
     }
 
     public static long scoreText(String text) {
