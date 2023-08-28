@@ -17,15 +17,15 @@ public class Main {
         long score = 0;
         while (scanner.hasNextLine()) {
             ScoreCharText temp = SingleXORCipher.decryptStringSingleXORCipher(HexToBase64.hexToIntArray(scanner.nextLine()));
-            if (temp.getScore() > score) {
+            if (temp.score() > score) {
                 maxScored = temp;
-                score = maxScored.getScore();
+                score = maxScored.score();
             }
         }
 
         assert maxScored != null;
-        System.out.println("Char of string: " + maxScored.getC());
-        System.out.println("Score of string: " + maxScored.getScore());
-        System.out.println("Decrypted string: " + maxScored.getText());
+        System.out.println("Char of string: " + maxScored.c());
+        System.out.println("Score of string: " + maxScored.score());
+        System.out.println("Decrypted string: " + maxScored.text());
     }
 }

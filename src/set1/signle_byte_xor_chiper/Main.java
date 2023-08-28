@@ -8,6 +8,6 @@ public class Main {
         int[] hexBytes = HexToBase64.hexToIntArray(hex);
 
         ScoreCharText result = SingleXORCipher.decryptStringSingleXORCipher(hexBytes);
-        System.out.println(result.getText());
+        System.out.println(result.text());
     }
 }
