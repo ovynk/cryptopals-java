@@ -18,8 +18,9 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         byte[] empty = {};
-        int lenOfEncryption = Base64.getDecoder().decode(encryptRandECB(empty, key)).length;
+        int lenOfEncryption = encryptRandECB(empty, key).length;
         int lenOfUnknownString = getEncryptionUnknownStringLength();
+        System.out.println("Size of blocks to ensure(must be 16): " + getEncryptionSizeBlock());
         System.out.println("Length of unknown string: " + lenOfUnknownString);
 
         byte[] recovered = recoverUnknownString(lenOfEncryption, lenOfUnknownString);
@@ -46,12 +47,12 @@ public class Main {
     public static int getEncryptionSizeBlock() throws Exception {
         int pt = 0;
         byte[] cipher = new byte[pt];
-        int baseLen = Base64.getDecoder().decode(encryptRandECB(cipher, key)).length;
+        int baseLen = encryptRandECB(cipher, key).length;
         int newLen = baseLen;
 
         while (baseLen == newLen) {
             pt++;
-            cipher = Base64.getDecoder().decode(encryptRandECB(new byte[pt], key));
+            cipher = encryptRandECB(new byte[pt], key);
             newLen = cipher.length;
         }
 
@@ -61,12 +62,12 @@ public class Main {
     public static int getEncryptionUnknownStringLength() throws Exception {
         int pt = 0;
         byte[] cipher = new byte[pt];
-        int baseLen = Base64.getDecoder().decode(encryptRandECB(cipher, key)).length;
+        int baseLen = encryptRandECB(cipher, key).length;
         int newLen = baseLen;
 
         while (baseLen == newLen) {
             pt++;
-            cipher = Base64.getDecoder().decode(encryptRandECB(new byte[pt], key));
+            cipher = encryptRandECB(new byte[pt], key);
             newLen = cipher.length;
         }
 
@@ -80,7 +81,7 @@ public class Main {
         for (int i = 1; i < lengthOfUnknown; i++) {
             String s = "A".repeat(lenOfEncrypt - i);
 
-            byte[] encrypted = Base64.getDecoder().decode(encryptRandECB(s.getBytes(), key));
+            byte[] encrypted = encryptRandECB(s.getBytes(), key);
 
             for (byte b = Byte.MIN_VALUE; b < Byte.MAX_VALUE; b++) {
                 byte[] test = new byte[s.getBytes().length + recovered.toString().getBytes().length + 1];
@@ -88,7 +89,7 @@ public class Main {
                 System.arraycopy(recovered.toString().getBytes(), 0, test, s.getBytes().length, recovered.toString().getBytes().length);
                 test[test.length - 1] = b;
 
-                byte[] encryptedTest = Base64.getDecoder().decode(encryptRandECB(test, key));
+                byte[] encryptedTest = encryptRandECB(test, key);
 
                 if (Arrays.equals(encrypted, 0, lenOfEncrypt, encryptedTest, 0, lenOfEncrypt)) {
                     recovered.append((char) b);
