@@ -16,4 +16,15 @@ public class FixedXOR {
 
         return s.toString();
     }
+
+    public static byte[] produceXOR(byte[] hex1, byte[] hex2) {
+        if (hex1.length != hex2.length) throw new IndexOutOfBoundsException("Hex1 and Hex2 arent the same length");
+
+        byte[] result = new byte[hex1.length];
+        for (int i = 0; i < hex1.length; i++) {
+            result[i] = (byte) (hex1[i] ^ hex2[i]);
+        }
+
+        return result;
+    }
 }
